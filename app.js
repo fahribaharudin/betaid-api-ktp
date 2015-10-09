@@ -45,7 +45,7 @@ var data = {
 app.use(bodyParser.json());
 app.use(express.static('./public'));
 
-app.route('/api/ktp')
+app.route('/ktp')
     .get(function(req, res) {
         res.json(Object.keys(data).map(function(key) {
             return data[key];
