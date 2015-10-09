@@ -1,7 +1,8 @@
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    _ = require('underscore'),
-    app = express();
+var express     = require('express'),
+    bodyParser  = require('body-parser'),
+    _           = require('underscore'),
+    cors        = require('cors'),
+    app         = express();
 
 var id = 7;
 var data = [
@@ -48,6 +49,7 @@ var data = [
 
 app.use(bodyParser.json());
 app.use(express.static('./public'));
+app.use(cors());
 
 app.route('/ktp')
     .get(function(req, res) {
