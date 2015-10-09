@@ -51,7 +51,7 @@ app.use(express.static('./public'));
 
 app.route('/ktp')
     .get(function(req, res) {
-        res.json({ data: data, status: 200 });
+        res.json({ data: data });
     });
 
 app.route('/ktp/:id')
@@ -63,7 +63,7 @@ app.route('/ktp/:id')
         if (person !== undefined) {
             res.json({ data: person, status: 200 });
         } else {
-            res.status(404).json({ error: { message: 'Data tidak ditemukan' }, status: 404 });
+            res.status(404).json({ error: { message: 'Data tidak ditemukan', status: 404 } });
         }
     });
 
@@ -84,7 +84,7 @@ app.use(function(err, req, res, next) {
         return next();
     }
  
-    res.json({ message: err.message || 'Endpoint not found', status: 404 });
+    res.json({ error: { message: err.message || 'Endpoint not found', status: 404 } });
 });
 
 
