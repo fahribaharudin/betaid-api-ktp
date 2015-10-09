@@ -14,7 +14,8 @@ var data = {
         statusKawin: 'Belum Kawin', 
         pekerjaan: 'Mahasiswa',
         kewarganegaraan: 'Indonesia',
-        masaBerlaku: '16-11-2017'
+        masaBerlaku: '16-11-2017',
+        namaIbu: 'Jamilah'
     },
     2: { 
         NIK: 12002, 
@@ -26,7 +27,8 @@ var data = {
         statusKawin: 'Belum Kawin', 
         pekerjaan: 'Mahasiswa',
         kewarganegaraan: 'Indonesia',
-        masaBerlaku: '21-09-2017'
+        masaBerlaku: '21-09-2017',
+        namaIbu: 'Tumini'
     },
     3: { 
         NIK: 12003, 
@@ -38,7 +40,8 @@ var data = {
         statusKawin: 'Belum Kawin', 
         pekerjaan: 'Mahasiswa',
         kewarganegaraan: 'Indonesia',
-        masaBerlaku: '10-10-2017'
+        masaBerlaku: '10-10-2017',
+        namaIbu: 'Siam'
     },
 };
 
@@ -47,9 +50,11 @@ app.use(express.static('./public'));
 
 app.route('/ktp')
     .get(function(req, res) {
-        res.json(Object.keys(data).map(function(key) {
+        var ktp = {}; 
+        ktp.data = Object.keys(data).map(function(key) {
             return data[key];
-        }));
+        });
+        res.json(ktp);
     });
 
 app.route('/')
@@ -57,5 +62,5 @@ app.route('/')
         res.redirect('/ktp');
     });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);
 
