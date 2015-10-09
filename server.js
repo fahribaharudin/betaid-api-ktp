@@ -61,7 +61,7 @@ app.route('/ktp/:id')
         }); 
 
         if (person !== undefined) {
-            res.json({ data: person, status: 200 });
+            res.json({ data: person });
         } else {
             res.status(404).json({ error: { message: 'Data tidak ditemukan', status: 404 } });
         }
