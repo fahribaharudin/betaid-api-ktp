@@ -72,6 +72,22 @@ app.route('/')
         res.redirect('/ktp');
     });
 
+app.get('*', function(req, res, next) {
+    var err = new Error();
+    err.status = 404;
+    next(err);
+});
+ 
+// handling 404 errors
+app.use(function(err, req, res, next) {
+    if(err.status !== 404) {
+        return next();
+    }
+ 
+    res.json({ message: err.message || 'Endpoint not found', status: 404 });
+});
+
+
 app.listen(process.env.PORT || 3000, function() {
     console.log('server running!');
 });
