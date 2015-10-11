@@ -1,51 +1,14 @@
 var express     = require('express'),
+    fs          = require('fs'),
     bodyParser  = require('body-parser'),
     _           = require('underscore'),
     cors        = require('cors'),
     app         = express();
 
-var id = 7;
-var data = [
-    { 
-        NIK: 12001, 
-        nama: 'Fahri Baharudin', 
-        ttl: 'Wonosobo, 16-11-1993', 
-        jenis_kelamin: 'L',
-        alamat: 'Jlamprang, Wonosobo', 
-        agama: 'Islam', 
-        statusKawin: 'Belum Kawin', 
-        pekerjaan: 'Mahasiswa',
-        kewarganegaraan: 'Indonesia',
-        masaBerlaku: '16-11-2017',
-        namaIbu: 'Jamilah'
-    },
-    { 
-        NIK: 12002, 
-        nama: 'Dwi Hardiman', 
-        ttl: 'Wonosobo, 21-09-1994', 
-        jenis_kelamin: 'L',
-        alamat: 'Menjer, Wonosobo', 
-        agama: 'Islam', 
-        statusKawin: 'Belum Kawin', 
-        pekerjaan: 'Mahasiswa',
-        kewarganegaraan: 'Indonesia',
-        masaBerlaku: '21-09-2017',
-        namaIbu: 'Tumini'
-    },
-    { 
-        NIK: 12003, 
-        nama: 'Maulana Nur Aji', 
-        ttl: 'Wonosobo, 10-10-1993', 
-        jenis_kelamin: 'L',
-        alamat: 'Jlamprang, Wonosobo', 
-        agama: 'Islam', 
-        statusKawin: 'Belum Kawin', 
-        pekerjaan: 'Mahasiswa',
-        kewarganegaraan: 'Indonesia',
-        masaBerlaku: '10-10-2017',
-        namaIbu: 'Siam'
-    },
-];
+var penduduk = fs.readFileSync('./ktp.json');
+penduduk = JSON.parse(penduduk);
+
+var data = penduduk;
 
 app.use(bodyParser.json());
 app.use(express.static('./public'));
